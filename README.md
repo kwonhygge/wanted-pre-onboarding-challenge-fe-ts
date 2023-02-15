@@ -3,6 +3,16 @@
 ## 설명
 - typescript로 todoList 모델링하기 
 
+### 과제 3
+- [jaypedia](https://github.com/jaypedia/wanted-pre-onboarding-challenge-fe-2) 님의 모델링을 바탕으로 설계하였습니다.
+
+- 이슈 및 궁금한 점
+  - id를 대조해서 필터링하는 부분에서 아래 ts 에러가 났다. 시간 관계상 해결하지 못했는데 4차 과제 전에 해결해야겠다.
+  
+  ```TS2367: This comparison appears to be unintentional because the types 'number' and 'Pick ' have no overlap.```
+
+  - `updateTags` 함수에서 파라미터로 tags가 들어왔는데 클라이언트에서 tags를 아예 가공해서 보내주는 건지 궁금했다. 서버에서 바뀔 태그만 받아 가공해주는 경우만 본 것 같은데 각각의 방법에 어떤 장단점이 있는지 궁금했다.
+
 ## typedoc으로 생성한 docs 페이지
 [바로가기](https://kwonhygge.github.io/wanted-pre-onboarding-challenge-fe-ts/docs/modules.html)
 
