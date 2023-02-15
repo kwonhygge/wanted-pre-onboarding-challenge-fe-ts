@@ -40,13 +40,13 @@ interface GetTodoById {
 }
 
 const getTodoById: GetTodoById = async (id) => {
-  const foundItemList = todos.filter((item) => item.id === id);
+  const foundItem = todos.find((item) => item.id === id.id);
 
-  if (!foundItemList?.length) {
+  if (!foundItem) {
     throw new Error("Couldn't find item");
   }
 
-  return foundItemList[0];
+  return foundItem;
 };
 
 interface UpdateTodo {
@@ -54,9 +54,9 @@ interface UpdateTodo {
 }
 
 const updateTodo: UpdateTodo = async (todo) => {
-  const foundIndex = todos?.indexOf((item) => item.id === todo.id);
+  const foundIndex = todos?.findIndex((item) => item.id === todo.id);
 
-  if (!foundIndex) {
+  if (foundIndex === -1) {
     throw new Error("Couldn't find item");
   }
 
@@ -68,9 +68,9 @@ interface UpdateTags {
 }
 
 const updateTags: UpdateTags = async (id, tags) => {
-  const foundIndex = todos?.indexOf((item) => item.id === id);
+  const foundIndex = todos?.findIndex((item) => item.id === id.id);
 
-  if (!foundIndex) {
+  if (foundIndex === -1) {
     throw new Error("Couldn't find item");
   }
 
@@ -92,17 +92,17 @@ interface DeleteById {
 }
 
 const deleteTodoById: DeleteById = async (id) => {
-  if (!todos?.some((item) => item.id === id)) {
+  if (!todos?.some((item) => item.id === id.id)) {
     throw new Error("Couldn't find item");
   }
 
-  todos = todos?.filter((item) => item.id !== id);
+  todos = todos?.filter((item) => item.id !== id.id);
 };
 
 const deleteAllTags: DeleteById = async (id) => {
-  const foundIndex = todos?.indexOf((item) => item.id === id);
+  const foundIndex = todos?.findIndex((item) => item.id === id.id);
 
-  if (!foundIndex) {
+  if (foundIndex === -1) {
     throw new Error("Couldn't find item");
   }
 
@@ -114,15 +114,15 @@ interface DeleteTag {
 }
 
 const deleteTag: DeleteTag = async (id, tagId) => {
-  const foundIndex = todos?.indexOf((item) => item.id === id);
+  const foundIndex = todos?.findIndex((item) => item.id === id.id);
 
-  if (!foundIndex) {
+  if (foundIndex === -1) {
     throw new Error("Couldn't find item");
   }
 
   const foundItem = todos[foundIndex];
 
-  const newTags = foundItem.tags?.filter((item) => item.id !== tagId);
+  const newTags = foundItem.tags?.filter((item) => item.id !== tagId.id);
 
   todos.splice(foundIndex, 1, { ...foundItem, tags: newTags });
 };
